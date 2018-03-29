@@ -1,3 +1,17 @@
 {
-  "title": "Bienvenue à React"
+  "title": "Bienvenue à React",
+  "home": {
+    "title": "Bienvenu sur Betcoin",
+    "subTitle": "Bla bla bla",
+    "banner": {
+      "bet": "Pariez sur le bon",
+      "pronostic": "Pronostiquez dès maintenant !"
+    },
+    "login": {
+      "join": "Rejoignez l'aventure"
+    }
+  },
+  "jumbotron": {
+    "nextMatch": "Prochain match"
+  }
 }

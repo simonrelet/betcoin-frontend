@@ -5,19 +5,25 @@ import injectSheet from 'react-jss';
 
 const styles = {
   iconButton: {
+    alignItems: 'center',
     backgroundColor: 'transparent',
     border: 'none',
     color: 'inherit',
     cursor: 'pointer',
+    display: 'flex',
     fontSize: 'inherit',
+    justifyContent: 'center',
     padding: 0,
   },
 };
 
 function IconButton(props) {
-  const { children, classes, className } = props;
+  const { children, classes, className, ...otherProps } = props;
   return (
-    <button className={classNames(classes.iconButton, className)}>
+    <button
+      className={classNames(classes.iconButton, className)}
+      {...otherProps}
+    >
       {children}
     </button>
   );

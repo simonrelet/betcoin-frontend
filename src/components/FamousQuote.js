@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
+import QuoteIcon from '../icons/QuoteIcon';
 
 const quotes = [
   {
@@ -12,24 +13,29 @@ const quotes = [
 
 const styles = theme => ({
   famousQuote: {
-    alignItems: 'baseline',
-    backgroundColor: theme.famousQuote.backgroundColor,
-    color: theme.famousQuote.color,
+    alignItems: 'center',
+    backgroundColor: theme.palette.background.darkGrey,
+    color: theme.palette.common.white,
     display: 'flex',
     justifyContent: 'center',
-    flex: 1,
-    padding: [theme.spacingUnit, theme.spacingUnit * 2],
-  },
-  item: {
-    padding: [theme.spacingUnit, theme.spacingUnit * 2],
+    padding: [theme.spacingUnit * 2, theme.spacingUnit * 4],
   },
   quote: {
-    composes: '$item',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  text: {
+    marginBottom: theme.spacingUnit * 2,
   },
   author: {
-    composes: '$item',
     fontStyle: 'italic',
-    fontSize: 14,
+    fontSize: 12,
+    textAlign: 'right',
+  },
+  icon: {
+    flex: 'none',
+    height: 40,
+    marginRight: theme.spacingUnit * 4,
   },
 });
 
@@ -37,8 +43,12 @@ function FamousQuote(props) {
   const { classes, className } = props;
   return (
     <div className={classNames(classes.famousQuote, className)}>
-      <div className={classes.quote}>&laquo; {quotes[0].quote} &raquo;</div>
-      <div className={classes.author}>{quotes[0].author}</div>
+      <QuoteIcon className={classes.icon} />
+
+      <div className={classes.quote}>
+        <div className={classes.text}>&laquo; {quotes[0].quote} &raquo;</div>
+        <div className={classes.author}>{quotes[0].author}</div>
+      </div>
     </div>
   );
 }

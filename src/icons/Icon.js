@@ -11,7 +11,6 @@ const styles = {
     height: 24,
     transition: 'fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     userSelect: 'none',
-    width: 24,
   },
 };
 

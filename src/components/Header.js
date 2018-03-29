@@ -1,34 +1,40 @@
 import React from 'react';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MenuIcon from '../icons/MenuIcon';
+import BetcoinLogo from '../icons/BetcoinLogo';
 import IconButton from './IconButton';
 
 const styles = theme => ({
   header: {
     alignItems: 'center',
-    backgroundColor: theme.header.backgroundColor,
-    color: theme.header.color,
+    backgroundColor: theme.palette.primary.base,
+    boxShadow: theme.shadows[2],
+    color: theme.palette.common.white,
     display: 'flex',
+    height: 60,
     padding: [0, theme.spacingUnit * 2],
+    zIndex: theme.zIndex.appBar,
+    [theme.breakpoints.down('sm')]: {
+      height: 50,
+    },
   },
   title: {
-    fontWeight: 300,
-    padding: [theme.spacingUnit, 0],
-    margin: 0,
-    fontSize: 32,
-    color: 'inherit',
-    textDecoration: 'none',
-  },
-  menuButton: {
     alignItems: 'center',
     display: 'flex',
-    height: 48,
-    justifyContent: 'center',
+    height: '100%',
+  },
+  titleLogo: {
+    height: '90%',
+  },
+  menuButton: {
     marginRight: theme.spacingUnit * 2,
-    width: 48,
-  }
+    padding: theme.spacingUnit,
+    [theme.breakpoints.down('sm')]: {
+      marginRight: theme.spacingUnit,
+    },
+  },
 });
 
 function Header(props) {
@@ -39,7 +45,9 @@ function Header(props) {
         <MenuIcon />
       </IconButton>
 
-      <Link to="/" className={classes.title}>Betcoin</Link>
+      <Link to="/" className={classes.title}>
+        <BetcoinLogo className={classes.titleLogo} />
+      </Link>
     </header>
   );
 }
