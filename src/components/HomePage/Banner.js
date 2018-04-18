@@ -1,66 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
 import { I18n } from 'react-i18next';
+import injectStyle from '../../core/injectStyle';
 import HandCoinIcon from '../../icons/HandCoinIcon';
 
-const styles = theme => ({
-  banner: {
-    backgroundColor: theme.palette.secondary.base,
-    padding: [theme.spacingUnit * 2, theme.spacingUnit * 6],
-    display: 'flex',
-    flex: 'none',
-    justifyContent: 'center',
-    height: 150,
-    borderBottom: {
-      color: theme.palette.secondary.darker,
-      style: 'solid',
-      width: 10,
+function styles({ palette, spacingUnit, breakpoints }) {
+  return {
+    root: {
+      backgroundColor: palette.secondary.base,
+      padding: [spacingUnit * 2, spacingUnit * 6],
+      display: 'flex',
+      flex: 'none',
+      justifyContent: 'center',
+      height: 150,
+      borderBottom: {
+        color: palette.secondary.darker,
+        style: 'solid',
+        width: 10,
+      },
+      [breakpoints.down('md')]: {
+        height: 80,
+        padding: [spacingUnit, spacingUnit * 3],
+      },
     },
-    [theme.breakpoints.down('md')]: {
-      height: 80,
-      padding: [theme.spacingUnit, theme.spacingUnit * 3],
+    icon: {
+      height: '100%',
+      flex: 'none',
+      marginRight: spacingUnit * 4,
     },
-  },
-  icon: {
-    height: '100%',
-    flex: 'none',
-    marginRight: theme.spacingUnit * 4,
-  },
-  content: {
-    alignItems: 'center',
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-  },
-  item: {
-    fontSize: 28,
-    textTransform: 'uppercase',
-    [theme.breakpoints.down('md')]: {
-      fontSize: 20,
+    content: {
+      alignItems: 'center',
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'space-around',
     },
-    [theme.breakpoints.down('xs')]: {
-      fontSize: 16,
+    item: {
+      fontSize: 28,
+      textTransform: 'uppercase',
+      [breakpoints.down('md')]: {
+        fontSize: 20,
+      },
+      [breakpoints.down('xs')]: {
+        fontSize: 16,
+      },
     },
-  },
-  left: {
-    composes: '$item',
-    alignSelf: 'flex-start',
-  },
-  right: {
-    composes: '$item',
-    alignSelf: 'flex-end',
-  },
-});
+    left: {
+      composes: '$item',
+      alignSelf: 'flex-start',
+    },
+    right: {
+      composes: '$item',
+      alignSelf: 'flex-end',
+    },
+  };
+}
 
-function Banner(props) {
-  const { classes, className } = props;
+function Banner({ classes }) {
   return (
     <I18n>
       {translate => (
-        <div className={classNames(classes.banner, className)}>
+        <div className={classes.root}>
           <HandCoinIcon className={classes.icon} />
 
           <div className={classes.content}>
@@ -77,7 +77,6 @@ function Banner(props) {
 
 Banner.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
 };
 
-export default injectSheet(styles)(Banner);
+export default injectStyle(styles)(Banner);

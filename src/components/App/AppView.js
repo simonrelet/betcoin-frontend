@@ -1,57 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import injectSheet from 'react-jss';
+import injectStyle from '../../core/injectStyle';
 import HomePage from '../HomePage';
 import Header from '../Header';
 import FamousQuote from '../FamousQuote';
 import Responsiveness from '../Responsiveness';
 
-const styles = theme => ({
-  '@global': {
-    '*': {
-      boxSizing: 'inherit',
-      '&::after,&::before': {
+function styles({ palette, typography, spacingUnit }) {
+  return {
+    '@global': {
+      '*': {
         boxSizing: 'inherit',
+        '&::after,&::before': {
+          boxSizing: 'inherit',
+        },
+      },
+      html: {
+        boxSizing: 'border-box',
+      },
+      body: {
+        color: palette.text.primary,
+        backgroundColor: palette.background.default,
+        fontFamily: typography.fontFamily,
+        margin: 0,
       },
     },
-    html: {
-      boxSizing: 'border-box',
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
     },
-    body: {
-      color: theme.palette.text.primary,
-      backgroundColor: theme.palette.background.default,
-      fontFamily: theme.typography.fontFamily,
-      margin: 0,
+    header: {
+      flex: 'none',
     },
-  },
-  app: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh',
-  },
-  header: {
-    flex: 'none',
-  },
-  content: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'auto',
-  },
-  page: {
-    flex: [1, 0, 'auto'],
-  },
-  quote: {
-    flex: 'none',
-    marginTop: theme.spacingUnit * 4,
-  },
-});
+    content: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'auto',
+    },
+    page: {
+      flex: [1, 0, 'auto'],
+    },
+    quote: {
+      flex: 'none',
+      marginTop: spacingUnit * 4,
+    },
+  };
+}
 
-function AppView(props) {
-  const { classes } = props;
-
+function AppView({ classes }) {
   return (
-    <div className={classes.app}>
+    <div className={classes.root}>
       <Header className={classes.header} />
       <div className={classes.content}>
         <HomePage className={classes.page} />
@@ -67,4 +67,4 @@ AppView.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default injectSheet(styles)(AppView);
+export default injectStyle(styles)(AppView);

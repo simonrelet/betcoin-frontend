@@ -1,35 +1,46 @@
 import React from 'react';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
+import injectStyle from '../../core/injectStyle';
 
-const styles = theme => ({
-  team: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: theme.spacingUnit,
-    fontSize: 24,
-    textTransform: 'uppercase',
-    color: theme.palette.white,
-    transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: 18,
+function styles({ spacingUnit, palette, breakpoints }) {
+  return {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      padding: spacingUnit,
+      fontSize: 24,
+      textTransform: 'uppercase',
+      color: palette.white,
+      transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+      [breakpoints.down('sm')]: {
+        fontSize: 18,
+      },
     },
-  },
-});
+  };
+}
 
-function Team(props) {
-  const { classes, className, name, color } = props;
+function Team({ classes, name, color }) {
   const style = {
     backgroundColor: color,
   };
 
   return (
-    <div className={classNames(classes.team, className)} style={style}>
+    <div className={classes.root} style={style}>
       {name}
     </div>
   );
 }
 
-export default injectSheet(styles)(Team);
+export const TeamPropTypes = {
+  color: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+Team.propTypes = {
+  classes: PropTypes.object.isRequired,
+  ...TeamPropTypes,
+};
+
+export default injectStyle(styles)(Team);

@@ -1,19 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import injectSheet from 'react-jss';
 import moment from 'moment';
 import { I18n } from 'react-i18next';
+import injectStyle from '../../core/injectStyle';
 import IconButton from '../IconButton';
 import Responsiveness from '../Responsiveness';
 
-const styles = theme => {
-  const backgroundColor = theme.palette.grey[900];
-  const color = theme.palette.white;
-  const colorSecondary = theme.palette.textAlternative.secondary;
+function styles({ palette, spacingUnit, breakpoints }) {
+  const backgroundColor = palette.grey[900];
+  const color = palette.white;
+  const colorSecondary = palette.textAlternative.secondary;
   const pillSize = 5;
 
   return {
-    date: {
+    root: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -25,9 +26,9 @@ const styles = theme => {
     item: {
       color,
       '&:not(:first-child)': {
-        marginTop: theme.spacingUnit,
+        marginTop: spacingUnit,
       },
-      [theme.breakpoints.down('sm')]: {
+      [breakpoints.down('sm')]: {
         fontSize: 14,
       },
     },
@@ -38,7 +39,7 @@ const styles = theme => {
     time: {
       composes: '$item',
       fontSize: 32,
-      [theme.breakpoints.down('sm')]: {
+      [breakpoints.down('sm')]: {
         fontSize: 28,
       },
     },
@@ -50,7 +51,7 @@ const styles = theme => {
       display: 'flex',
     },
     pillButton: {
-      padding: theme.spacingUnit,
+      padding: spacingUnit,
     },
     pill: {
       borderRadius: '50%',
@@ -77,10 +78,9 @@ const styles = theme => {
       right: '-10%',
     },
   };
-};
+}
 
-function Triangle(props) {
-  const { children, ...otherProps } = props;
+function Triangle({ children, ...otherProps }) {
   return (
     <svg viewBox="0 0 1 1" preserveAspectRatio="none" {...otherProps}>
       {children}
@@ -88,22 +88,13 @@ function Triangle(props) {
   );
 }
 
-function Date(props) {
-  const {
-    classes,
-    className,
-    date,
-    matchCount,
-    matchIndex,
-    onChangeMatch,
-  } = props;
-
+function Date({ classes, date, matchCount, matchIndex, onChangeMatch }) {
   const matchs = [...Array(matchCount)];
 
   return (
     <I18n>
       {translate => (
-        <div className={classNames(classes.date, className)}>
+        <div className={classes.root}>
           <Triangle className={classes.triangle1}>
             <path d="M1 0L0 1L1 1z" />
           </Triangle>
@@ -142,4 +133,12 @@ function Date(props) {
   );
 }
 
-export default injectSheet(styles)(Date);
+Date.propTypes = {
+  classes: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
+  matchCount: PropTypes.number.isRequired,
+  matchIndex: PropTypes.number.isRequired,
+  onChangeMatch: PropTypes.func.isRequired,
+};
+
+export default injectStyle(styles)(Date);

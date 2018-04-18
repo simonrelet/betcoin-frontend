@@ -1,16 +1,22 @@
 import React from 'react';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
+import injectStyle from '../core/injectStyle';
 
-const styles = theme => ({
-  page: {
-    ...theme.maxWidth,
-  },
-});
-
-function Page(props) {
-  const { classes, className, children } = props;
-  return <div className={classNames(classes.page, className)}>{children}</div>;
+function styles({ maxWidth }) {
+  return {
+    root: {
+      ...maxWidth,
+    },
+  };
 }
 
-export default injectSheet(styles)(Page);
+function Page({ classes, children }) {
+  return <div className={classes.root}>{children}</div>;
+}
+
+Page.propTypes = {
+  classes: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+export default injectStyle(styles)(Page);

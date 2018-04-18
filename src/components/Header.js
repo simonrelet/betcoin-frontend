@@ -1,46 +1,47 @@
 import React from 'react';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import injectStyle from '../core/injectStyle';
 import MenuIcon from '../icons/MenuIcon';
 import BetcoinLogo from '../icons/BetcoinLogo';
 import IconButton from './IconButton';
 
-const styles = theme => ({
-  header: {
-    alignItems: 'center',
-    backgroundColor: theme.palette.primary.base,
-    boxShadow: theme.shadows[2],
-    color: theme.palette.white,
-    display: 'flex',
-    height: 60,
-    padding: [0, theme.spacingUnit * 2],
-    zIndex: theme.zIndex.appBar,
-    [theme.breakpoints.down('sm')]: {
-      height: 50,
+function styles({ palette, shadows, spacingUnit, zIndex, breakpoints }) {
+  return {
+    root: {
+      alignItems: 'center',
+      backgroundColor: palette.primary.base,
+      boxShadow: shadows[2],
+      color: palette.white,
+      display: 'flex',
+      height: 60,
+      padding: [0, spacingUnit * 2],
+      zIndex: zIndex.appBar,
+      [breakpoints.down('sm')]: {
+        height: 50,
+      },
     },
-  },
-  title: {
-    alignItems: 'center',
-    display: 'flex',
-    height: '100%',
-  },
-  titleLogo: {
-    height: '90%',
-  },
-  menuButton: {
-    marginRight: theme.spacingUnit * 2,
-    padding: theme.spacingUnit,
-    [theme.breakpoints.down('sm')]: {
-      marginRight: theme.spacingUnit,
+    title: {
+      alignItems: 'center',
+      display: 'flex',
+      height: '100%',
     },
-  },
-});
+    titleLogo: {
+      height: '90%',
+    },
+    menuButton: {
+      marginRight: spacingUnit * 2,
+      padding: spacingUnit,
+      [breakpoints.down('sm')]: {
+        marginRight: spacingUnit,
+      },
+    },
+  };
+}
 
-function Header(props) {
-  const { classes, className } = props;
+function Header({ classes }) {
   return (
-    <header className={classNames(classes.header, className)}>
+    <header className={classes.root}>
       <IconButton className={classes.menuButton}>
         <MenuIcon />
       </IconButton>
@@ -52,4 +53,8 @@ function Header(props) {
   );
 }
 
-export default injectSheet(styles)(Header);
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default injectStyle(styles)(Header);

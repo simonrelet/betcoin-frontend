@@ -1,27 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import injectStyle from '../core/injectStyle';
 
-function styles(theme) {
-  const { palette, shadows } = theme;
+function styles({ palette, shadows }) {
   return {
-    paper: {
+    root: {
       backgroundColor: palette.background.paper,
       border: {
         width: 1,
         style: 'solid',
-        color: theme.palette.divider,
+        color: palette.divider,
       },
       boxShadow: props => shadows[props.elevation],
     },
   };
 }
 
-function Paper(props) {
-  const { classes, className, children, elevation, ...otherProps } = props;
+function Paper({ classes, children, elevation, ...otherProps }) {
   return (
-    <div className={classNames(classes.paper, className)} {...otherProps}>
+    <div className={classes.root} {...otherProps}>
       {children}
     </div>
   );
@@ -29,7 +26,6 @@ function Paper(props) {
 
 Paper.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   children: PropTypes.node,
   elevation: PropTypes.number,
 };
@@ -38,4 +34,4 @@ Paper.defaultProps = {
   elevation: 0,
 };
 
-export default injectSheet(styles)(Paper);
+export default injectStyle(styles)(Paper);

@@ -1,39 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import injectStyle from '../../core/injectStyle';
 import Paper from '../Paper';
 import landingImage from './landing-image.png';
 import Banner from './Banner';
 
-const styles = theme => ({
-  bitcoinBanner: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  imageBlock: {
-    flex: 1,
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    padding: theme.spacingUnit * 4,
-    [theme.breakpoints.down('sm')]: {
-      padding: theme.spacingUnit,
+function styles({ spacingUnit, breakpoints }) {
+  return {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
     },
-  },
-  landingImage: {
-    width: '100%',
-    maxWidth: 'max-content',
-  },
-  banner: {
-    flex: 'none',
-  },
-});
+    imageBlock: {
+      flex: 1,
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      padding: spacingUnit * 4,
+      [breakpoints.down('sm')]: {
+        padding: spacingUnit,
+      },
+    },
+    landingImage: {
+      width: '100%',
+      maxWidth: 'max-content',
+    },
+    banner: {
+      flex: 'none',
+    },
+  };
+}
 
-function BitcoinBanner(props) {
-  const { classes, className } = props;
+function BitcoinBanner({ classes }) {
   return (
-    <Paper className={classNames(classes.bitcoinBanner, className)}>
+    <Paper className={classes.root}>
       <div className={classes.imageBlock}>
         <img
           src={landingImage}
@@ -48,7 +48,6 @@ function BitcoinBanner(props) {
 
 BitcoinBanner.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
 };
 
-export default injectSheet(styles)(BitcoinBanner);
+export default injectStyle(styles)(BitcoinBanner);

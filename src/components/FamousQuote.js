@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import injectStyle from '../core/injectStyle';
 import QuoteIcon from '../icons/QuoteIcon';
 
 const quotes = [
@@ -11,38 +10,39 @@ const quotes = [
   },
 ];
 
-const styles = theme => ({
-  famousQuote: {
-    alignItems: 'center',
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.white,
-    display: 'flex',
-    justifyContent: 'center',
-    padding: [theme.spacingUnit * 2, theme.spacingUnit * 4],
-  },
-  quote: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  text: {
-    marginBottom: theme.spacingUnit * 2,
-  },
-  author: {
-    fontStyle: 'italic',
-    fontSize: 12,
-    textAlign: 'right',
-  },
-  icon: {
-    flex: 'none',
-    height: 40,
-    marginRight: theme.spacingUnit * 4,
-  },
-});
+function styles({ palette, spacingUnit }) {
+  return {
+    root: {
+      alignItems: 'center',
+      backgroundColor: palette.grey[800],
+      color: palette.white,
+      display: 'flex',
+      justifyContent: 'center',
+      padding: [spacingUnit * 2, spacingUnit * 4],
+    },
+    quote: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    text: {
+      marginBottom: spacingUnit * 2,
+    },
+    author: {
+      fontStyle: 'italic',
+      fontSize: 12,
+      textAlign: 'right',
+    },
+    icon: {
+      flex: 'none',
+      height: 40,
+      marginRight: spacingUnit * 4,
+    },
+  };
+}
 
-function FamousQuote(props) {
-  const { classes, className } = props;
+function FamousQuote({ classes }) {
   return (
-    <div className={classNames(classes.famousQuote, className)}>
+    <div className={classes.root}>
       <QuoteIcon className={classes.icon} />
 
       <div className={classes.quote}>
@@ -58,4 +58,4 @@ FamousQuote.propTypes = {
   className: PropTypes.string,
 };
 
-export default injectSheet(styles)(FamousQuote);
+export default injectStyle(styles)(FamousQuote);

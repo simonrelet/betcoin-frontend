@@ -1,38 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import injectStyle from '../core/injectStyle';
 
-const styles = {
-  iconButton: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
-    border: 'none',
-    color: 'inherit',
-    cursor: 'pointer',
-    display: 'flex',
-    fontSize: 'inherit',
-    justifyContent: 'center',
-    padding: 0,
-  },
-};
+function styles() {
+  return {
+    root: {
+      alignItems: 'center',
+      backgroundColor: 'transparent',
+      border: 'none',
+      color: 'inherit',
+      cursor: 'pointer',
+      display: 'flex',
+      fontSize: 'inherit',
+      justifyContent: 'center',
+      padding: 0,
+    },
+  };
+}
 
-function IconButton(props) {
-  const { children, classes, className, ...otherProps } = props;
+function IconButton({ children, classes, ...otherProps }) {
   return (
-    <button
-      className={classNames(classes.iconButton, className)}
-      {...otherProps}
-    >
+    <button className={classes.root} {...otherProps}>
       {children}
     </button>
   );
 }
 
 IconButton.propTypes = {
-  children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 
-export default injectSheet(styles)(IconButton);
+export default injectStyle(styles)(IconButton);

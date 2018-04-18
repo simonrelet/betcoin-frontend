@@ -1,67 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
 import { I18n } from 'react-i18next';
+import injectStyle from '../../core/injectStyle';
 import BitcoinBanner from './BitcoinBanner';
 import LoginBlock from './LoginBlock';
 import Jumbotron from '../Jumbotron';
 import Page from '../Page';
 
-const styles = theme => ({
-  homePage: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  jumbotron: {
-    flex: 'none',
-  },
-  content: {
-    flex: [1, 0, 'auto'],
-  },
-  title: {
-    color: theme.palette.text.primary,
-    fontSize: 48,
-    fontWeight: 400,
-    textAlign: 'center',
-    margin: [theme.spacingUnit * 6, 0, theme.spacingUnit * 4],
-  },
-  subTitle: {
-    color: theme.palette.text.secondary,
-    fontSize: 24,
-    fontWeight: 400,
-    textAlign: 'center',
-    margin: [theme.spacingUnit * 4, 0],
-  },
-  blocks: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    marginTop: theme.spacingUnit * 4,
-    gridGap: `${theme.spacingUnit * 4}px`,
-    gridTemplateAreas: `
+function styles({ palette, spacingUnit, breakpoints }) {
+  return {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    jumbotron: {
+      flex: 'none',
+    },
+    content: {
+      flex: [1, 0, 'auto'],
+    },
+    title: {
+      color: palette.text.primary,
+      fontSize: 48,
+      fontWeight: 400,
+      textAlign: 'center',
+      margin: [spacingUnit * 6, 0, spacingUnit * 4],
+    },
+    subTitle: {
+      color: palette.text.secondary,
+      fontSize: 24,
+      fontWeight: 400,
+      textAlign: 'center',
+      margin: [spacingUnit * 4, 0],
+    },
+    blocks: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      marginTop: spacingUnit * 4,
+      gridGap: `${spacingUnit * 4}px`,
+      gridTemplateAreas: `
       "b b l"
     `,
-    [theme.breakpoints.down('sm')]: {
-      gridTemplateAreas: `
+      [breakpoints.down('sm')]: {
+        gridTemplateAreas: `
         "l l l"
         "b b b"
       `,
+      },
     },
-  },
-  banner: {
-    gridArea: 'b',
-  },
-  login: {
-    gridArea: 'l',
-  },
-});
+    banner: {
+      gridArea: 'b',
+    },
+    login: {
+      gridArea: 'l',
+    },
+  };
+}
 
-function HomePage(props) {
-  const { classes, className } = props;
+function HomePage({ classes }) {
   return (
     <I18n>
       {translate => (
-        <div className={classNames(classes.homePage, className)}>
+        <div className={classes.root}>
           <Jumbotron className={classes.jumbotron} />
 
           <Page className={classes.content}>
@@ -81,7 +81,6 @@ function HomePage(props) {
 
 HomePage.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
 };
 
-export default injectSheet(styles)(HomePage);
+export default injectStyle(styles)(HomePage);
