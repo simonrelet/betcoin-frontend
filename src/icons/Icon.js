@@ -28,6 +28,6 @@ Icon.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   viewBox: PropTypes.string.isRequired,
-}
+};
 
 export default injectSheet(styles)(Icon);

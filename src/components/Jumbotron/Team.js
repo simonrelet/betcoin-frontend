@@ -23,7 +23,7 @@ function Team(props) {
   const { classes, className, name, color } = props;
   const style = {
     backgroundColor: color,
-  }
+  };
 
   return (
     <div className={classNames(classes.team, className)} style={style}>

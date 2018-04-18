@@ -4,14 +4,17 @@
   "description": "Betcoin frontend",
   "private": true,
   "scripts": {
-    "build": "cross-env REACT_APP_VERSION=$npm_package_version react-scripts build",
+    "build":
+      "cross-env REACT_APP_VERSION=$npm_package_version react-scripts build",
     "clean": "rimraf build coverage",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "yarn lint-js && yarn lint-format",
     "lint-format": "prettier --list-different \"**/*.{js,json,md}\"",
     "lint-js": "eslint .",
-    "start": "cross-env REACT_APP_VERSION=$npm_package_version react-scripts start",
-    "test": "cross-env REACT_APP_VERSION=$npm_package_version react-scripts test --env=jsdom"
+    "start":
+      "cross-env REACT_APP_VERSION=$npm_package_version react-scripts start",
+    "test":
+      "cross-env REACT_APP_VERSION=$npm_package_version react-scripts test --env=jsdom"
   },
   "dependencies": {
     "classnames": "^2.2.5",
