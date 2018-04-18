@@ -11,7 +11,7 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: theme.palette.primary.base,
     boxShadow: theme.shadows[2],
-    color: theme.palette.common.white,
+    color: theme.palette.white,
     display: 'flex',
     height: 60,
     padding: [0, theme.spacingUnit * 2],

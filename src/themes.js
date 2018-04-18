@@ -8,28 +8,7 @@ const maxWidth = {
   margin: [0, 'auto'],
 };
 
-const grey = {
-  50: '#fafafa',
-  100: '#f5f5f5',
-  200: '#eeeeee',
-  300: '#e0e0e0',
-  400: '#bdbdbd',
-  500: '#9e9e9e',
-  600: '#757575',
-  700: '#616161',
-  800: '#424242',
-  900: '#212121',
-  A100: '#d5d5d5',
-  A200: '#aaaaaa',
-  A400: '#303030',
-  A700: '#616161',
-};
-
-const palette = {
-  common: {
-    white: '#fff',
-    black: '#1f1f1f',
-  },
+const colors = {
   primary: {
     base: '#0f2a6b',
   },
@@ -37,7 +16,28 @@ const palette = {
     base: '#5ecac0',
     darker: '#349d93',
   },
-  grey,
+  white: '#fff',
+  black: '#000',
+  grey: {
+    50: '#fafafa',
+    100: '#f5f5f5',
+    200: '#eeeeee',
+    300: '#e0e0e0',
+    400: '#bdbdbd',
+    500: '#9e9e9e',
+    600: '#757575',
+    700: '#616161',
+    800: '#424242',
+    900: '#212121',
+    A100: '#d5d5d5',
+    A200: '#aaaaaa',
+    A400: '#303030',
+    A700: '#616161',
+  },
+};
+
+const palette = {
+  ...colors,
   divider: 'rgba(0, 0, 0, 0.12)',
   text: {
     primary: 'rgba(0, 0, 0, 0.87)',
@@ -52,9 +52,9 @@ const palette = {
     hint: 'rgba(255, 255, 255, 0.38)',
   },
   background: {
-    default: '#fff',
-    darkGrey: '#3f3f3f',
-    lighGrey: '#f2f2f2',
+    default: colors.grey[50],
+    paper: colors.white,
+    // paperAlternative: colors.grey[200],
   },
 };
 

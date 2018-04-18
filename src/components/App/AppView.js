@@ -19,6 +19,7 @@ const styles = theme => ({
     },
     body: {
       color: theme.palette.text.primary,
+      backgroundColor: theme.palette.background.default,
       fontFamily: theme.typography.fontFamily,
       margin: 0,
     },

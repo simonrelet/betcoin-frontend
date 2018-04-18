@@ -2,23 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
+import Paper from '../Paper';
 import landingImage from './landing-image.png';
 import Banner from './Banner';
 
 const styles = theme => ({
   bitcoinBanner: {
-    backgroundColor: theme.palette.background.default,
     display: 'flex',
     flexDirection: 'column',
   },
   imageBlock: {
     flex: 1,
-    border: {
-      width: 1,
-      color: theme.palette.divider,
-      style: 'solid',
-    },
-    borderBottom: 0,
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
@@ -39,7 +33,7 @@ const styles = theme => ({
 function BitcoinBanner(props) {
   const { classes, className } = props;
   return (
-    <div className={classNames(classes.bitcoinBanner, className)}>
+    <Paper className={classNames(classes.bitcoinBanner, className)}>
       <div className={classes.imageBlock}>
         <img
           src={landingImage}
@@ -48,7 +42,7 @@ function BitcoinBanner(props) {
         />
       </div>
       <Banner className={classes.banner} />
-    </div>
+    </Paper>
   );
 }
 

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import injectSheet from 'react-jss';
 import { I18n } from 'react-i18next';
+import Paper from '../Paper';
 
 const styles = theme => ({
   loginBlock: {
-    backgroundColor: theme.palette.background.lighGrey,
     padding: theme.spacingUnit * 4,
   },
   title: {
@@ -20,11 +20,11 @@ function LoginBlock(props) {
   return (
     <I18n>
       {translate => (
-        <div className={classNames(classes.loginBlock, className)}>
+        <Paper className={classNames(classes.loginBlock, className)}>
           <div className={classNames(classes.title)}>
             {translate('home.login.join')}
           </div>
-        </div>
+        </Paper>
       )}
     </I18n>
   );

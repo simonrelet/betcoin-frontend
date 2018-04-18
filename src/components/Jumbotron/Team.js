@@ -11,7 +11,7 @@ const styles = theme => ({
     padding: theme.spacingUnit,
     fontSize: 24,
     textTransform: 'uppercase',
-    color: theme.palette.common.white,
+    color: theme.palette.white,
     transition: 'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     [theme.breakpoints.down('sm')]: {
       fontSize: 18,

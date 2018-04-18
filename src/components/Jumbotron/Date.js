@@ -7,8 +7,8 @@ import IconButton from '../IconButton';
 import Responsiveness from '../Responsiveness';
 
 const styles = theme => {
-  const backgroundColor = theme.palette.common.black;
-  const color = theme.palette.common.white;
+  const backgroundColor = theme.palette.grey[900];
+  const color = theme.palette.white;
   const colorSecondary = theme.palette.textAlternative.secondary;
   const pillSize = 5;
 

@@ -14,8 +14,8 @@ const quotes = [
 const styles = theme => ({
   famousQuote: {
     alignItems: 'center',
-    backgroundColor: theme.palette.background.darkGrey,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.grey[800],
+    color: theme.palette.white,
     display: 'flex',
     justifyContent: 'center',
     padding: [theme.spacingUnit * 2, theme.spacingUnit * 4],
