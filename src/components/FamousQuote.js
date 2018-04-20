@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import injectStyle from '../core/injectStyle';
 import QuoteIcon from '../icons/QuoteIcon';
 
@@ -10,7 +10,7 @@ const quotes = [
   },
 ];
 
-function styles({ palette, spacingUnit }) {
+function styles({ palette, spacing }) {
   return {
     root: {
       alignItems: 'center',
@@ -18,14 +18,14 @@ function styles({ palette, spacingUnit }) {
       color: palette.white,
       display: 'flex',
       justifyContent: 'center',
-      padding: [spacingUnit * 2, spacingUnit * 4],
+      padding: [spacing(2), spacing(4)],
     },
     quote: {
       display: 'flex',
       flexDirection: 'column',
     },
     text: {
-      marginBottom: spacingUnit * 2,
+      marginBottom: spacing(2),
     },
     author: {
       fontStyle: 'italic',
@@ -35,7 +35,7 @@ function styles({ palette, spacingUnit }) {
     icon: {
       flex: 'none',
       height: 40,
-      marginRight: spacingUnit * 4,
+      marginRight: spacing(4),
     },
   };
 }

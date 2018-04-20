@@ -1,6 +1,8 @@
 import { BREAKPOINTS, BREAKPOINTS_KEYS } from './core/constants';
 
-const spacingUnit = 8;
+function spacing(scale = 1) {
+  return `${0.5 * scale}rem`;
+}
 
 const maxWidth = {
   width: '90vw',
@@ -54,13 +56,27 @@ const palette = {
   background: {
     default: colors.grey[50],
     paper: colors.white,
-    // paperAlternative: colors.grey[200],
   },
 };
 
 const typography = {
   fontFamily: 'Helvetica Neue, Helvetica, Arial',
   fontSize: 16,
+  title: {
+    color: palette.text.primary,
+    fontSize: 48,
+    fontWeight: 400,
+    margin: [spacing(6), 0, spacing(4)],
+  },
+  subTitle: {
+    color: palette.text.secondary,
+    fontSize: 24,
+    fontWeight: 400,
+    margin: [spacing(4), 0, spacing(2)],
+  },
+  body: {
+    margin: [spacing(2), 0],
+  },
 };
 
 const breakpoints = {
@@ -118,7 +134,7 @@ const zIndex = {
 
 export default {
   default: {
-    spacingUnit,
+    spacing,
     maxWidth,
     palette,
     typography,

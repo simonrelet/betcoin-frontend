@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import { create as createJss } from 'jss';
 import { JssProvider } from 'react-jss';
 import jssPreset from 'jss-preset-default';
 import reducers from './core/reducers';
 import storage from './core/storage';
+import auth from './core/auth';
 import ThemeProvider from './components/ThemeProvider';
 import App from './components/App';
 import themes from './themes';
@@ -20,30 +20,34 @@ global.APP_VERSION = process.env.REACT_APP_VERSION;
 initializeI18n();
 
 const jss = createJss(jssPreset());
-const store = createStore(reducers, storage.load());
-
-store.subscribe(() => {
-  // Save the applicaiton state on each update.
-  storage.save(store.getState());
-});
 
 const root = document.getElementById('root');
 if (!root) {
   throw new Error('The mounting point for React was not found.');
 }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <JssProvider jss={jss}>
-      <ThemeProvider themes={themes}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </JssProvider>
-  </Provider>,
-  root,
-);
+storage.load().then(state => {
+  const store = createStore(reducers, state);
 
-// To allow the service worker to notify the app on background updates.
-registerServiceWorker(store);
+  store.subscribe(() => {
+    // Save the applicaiton state on each update.
+    storage.save(store.getState());
+  });
+
+  // To allow the modules to manipulate the state.
+  auth.setStore(store);
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <JssProvider jss={jss}>
+        <ThemeProvider themes={themes}>
+          <App />
+        </ThemeProvider>
+      </JssProvider>
+    </Provider>,
+    root,
+  );
+
+  // To allow the service worker to notify the app on background updates.
+  registerServiceWorker(store);
+});

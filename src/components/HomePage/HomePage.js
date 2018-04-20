@@ -1,13 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { I18n } from 'react-i18next';
 import injectStyle from '../../core/injectStyle';
-import BitcoinBanner from './BitcoinBanner';
-import LoginBlock from './LoginBlock';
 import Jumbotron from '../Jumbotron';
 import Page from '../Page';
+import BitcoinBanner from './BitcoinBanner';
+import UserInfo from './UserInfo';
 
-function styles({ palette, spacingUnit, breakpoints }) {
+function styles({ palette, spacing, breakpoints, typography }) {
   return {
     root: {
       display: 'flex',
@@ -20,24 +20,20 @@ function styles({ palette, spacingUnit, breakpoints }) {
       flex: [1, 0, 'auto'],
     },
     title: {
-      color: palette.text.primary,
-      fontSize: 48,
-      fontWeight: 400,
+      ...typography.title,
       textAlign: 'center',
-      margin: [spacingUnit * 6, 0, spacingUnit * 4],
+      margin: [spacing(6), 0, spacing(4)],
     },
     subTitle: {
-      color: palette.text.secondary,
-      fontSize: 24,
-      fontWeight: 400,
+      ...typography.subTitle,
       textAlign: 'center',
-      margin: [spacingUnit * 4, 0],
+      margin: [spacing(4), 0],
     },
     blocks: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
-      marginTop: spacingUnit * 4,
-      gridGap: `${spacingUnit * 4}px`,
+      marginTop: spacing(4),
+      gridGap: spacing(4),
       gridTemplateAreas: `
       "b b l"
     `,
@@ -70,7 +66,7 @@ function HomePage({ classes }) {
 
             <div className={classes.blocks}>
               <BitcoinBanner className={classes.banner} />
-              <LoginBlock className={classes.login} />
+              <UserInfo className={classes.login} />
             </div>
           </Page>
         </div>

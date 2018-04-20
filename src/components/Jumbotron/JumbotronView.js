@@ -1,14 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import injectStyle from '../../core/injectStyle';
-import Page from '../Page';
 import LeftArrowIcon from '../../icons/LeftArrowIcon';
 import RightArrowIcon from '../../icons/RightArrowIcon';
 import IconButton from '../IconButton';
-import Team, { TeamPropTypes } from './Team';
+import Page from '../Page';
 import Date from './Date';
+import Team, { TeamPropTypes } from './Team';
 
-function styles({ spacingUnit }) {
+function styles({ spacing }) {
   return {
     root: {
       height: 150,
@@ -37,7 +37,7 @@ function styles({ spacingUnit }) {
       position: 'absolute',
       top: '50%',
       transform: 'translateY(-50%)',
-      padding: spacingUnit,
+      padding: spacing(),
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       borderRadius: '50%',
       '&:hover': {

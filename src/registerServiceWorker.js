@@ -1,4 +1,4 @@
-import { newVersionAvailable } from './core/actions';
+import actions from './core/actions';
 
 // In production, we register a service worker to serve assets from local cache.
 
@@ -67,7 +67,7 @@ function registerValidSW(swUrl, store) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
-              store.dispatch(newVersionAvailable());
+              store.dispatch(actions.newVersionAvailable());
               console.log('New content is available; please refresh.');
             } else {
               // At this point, everything has been precached.

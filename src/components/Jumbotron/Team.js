@@ -1,15 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import injectStyle from '../../core/injectStyle';
 
-function styles({ spacingUnit, palette, breakpoints }) {
+function styles({ spacing, palette, breakpoints }) {
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-end',
       alignItems: 'center',
-      padding: spacingUnit,
+      padding: spacing(),
       fontSize: 24,
       textTransform: 'uppercase',
       color: palette.white,

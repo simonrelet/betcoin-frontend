@@ -1,14 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { I18n } from 'react-i18next';
 import injectStyle from '../../core/injectStyle';
 import HandCoinIcon from '../../icons/HandCoinIcon';
 
-function styles({ palette, spacingUnit, breakpoints }) {
+function styles({ palette, spacing, breakpoints }) {
   return {
     root: {
       backgroundColor: palette.secondary.base,
-      padding: [spacingUnit * 2, spacingUnit * 6],
+      padding: [spacing(2), spacing(6)],
       display: 'flex',
       flex: 'none',
       justifyContent: 'center',
@@ -20,13 +20,13 @@ function styles({ palette, spacingUnit, breakpoints }) {
       },
       [breakpoints.down('md')]: {
         height: 80,
-        padding: [spacingUnit, spacingUnit * 3],
+        padding: [spacing(), spacing(3)],
       },
     },
     icon: {
       height: '100%',
       flex: 'none',
-      marginRight: spacingUnit * 4,
+      marginRight: spacing(4),
     },
     content: {
       alignItems: 'center',

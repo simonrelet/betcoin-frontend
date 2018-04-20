@@ -1,12 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import injectStyle from '../core/injectStyle';
-import MenuIcon from '../icons/MenuIcon';
-import BetcoinLogo from '../icons/BetcoinLogo';
-import IconButton from './IconButton';
+import injectStyle from '../../core/injectStyle';
+import BetcoinLogo from '../../icons/BetcoinLogo';
+import MenuIcon from '../../icons/MenuIcon';
+import IconButton from '../IconButton';
+import User from './User';
 
-function styles({ palette, shadows, spacingUnit, zIndex, breakpoints }) {
+function styles({ palette, shadows, spacing, zIndex, breakpoints }) {
   return {
     root: {
       alignItems: 'center',
@@ -15,7 +16,7 @@ function styles({ palette, shadows, spacingUnit, zIndex, breakpoints }) {
       color: palette.white,
       display: 'flex',
       height: 60,
-      padding: [0, spacingUnit * 2],
+      padding: [0, spacing(2)],
       zIndex: zIndex.appBar,
       [breakpoints.down('sm')]: {
         height: 50,
@@ -30,11 +31,14 @@ function styles({ palette, shadows, spacingUnit, zIndex, breakpoints }) {
       height: '90%',
     },
     menuButton: {
-      marginRight: spacingUnit * 2,
-      padding: spacingUnit,
+      marginRight: spacing(2),
+      padding: spacing(),
       [breakpoints.down('sm')]: {
-        marginRight: spacingUnit,
+        marginRight: spacing(),
       },
+    },
+    user: {
+      marginLeft: 'auto',
     },
   };
 }
@@ -49,6 +53,8 @@ function Header({ classes }) {
       <Link to="/" className={classes.title}>
         <BetcoinLogo className={classes.titleLogo} />
       </Link>
+
+      <User className={classes.user} />
     </header>
   );
 }

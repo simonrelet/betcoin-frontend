@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import injectStyle from '../../core/injectStyle';
 import Paper from '../Paper';
-import landingImage from './landing-image.png';
 import Banner from './Banner';
+import landingImage from './landing-image.png';
 
-function styles({ spacingUnit, breakpoints }) {
+function styles({ spacing, breakpoints }) {
   return {
     root: {
       display: 'flex',
@@ -16,9 +16,9 @@ function styles({ spacingUnit, breakpoints }) {
       alignItems: 'center',
       display: 'flex',
       justifyContent: 'center',
-      padding: spacingUnit * 4,
+      padding: spacing(4),
       [breakpoints.down('sm')]: {
-        padding: spacingUnit,
+        padding: spacing(),
       },
     },
     landingImage: {
@@ -33,7 +33,7 @@ function styles({ spacingUnit, breakpoints }) {
 
 function BitcoinBanner({ classes }) {
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.root} padding={false}>
       <div className={classes.imageBlock}>
         <img
           src={landingImage}

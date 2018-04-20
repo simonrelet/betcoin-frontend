@@ -1,12 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import injectStyle from '../../core/injectStyle';
-import HomePage from '../HomePage';
-import Header from '../Header';
+import Callback from '../Callback';
 import FamousQuote from '../FamousQuote';
-import Responsiveness from '../Responsiveness';
+import Header from '../Header';
+import HomePage from '../HomePage';
 
-function styles({ palette, typography, spacingUnit }) {
+function styles({ palette, typography, spacing }) {
   return {
     '@global': {
       '*': {
@@ -22,6 +23,7 @@ function styles({ palette, typography, spacingUnit }) {
         color: palette.text.primary,
         backgroundColor: palette.background.default,
         fontFamily: typography.fontFamily,
+        fontSize: typography.fontSize,
         margin: 0,
       },
     },
@@ -44,7 +46,7 @@ function styles({ palette, typography, spacingUnit }) {
     },
     quote: {
       flex: 'none',
-      marginTop: spacingUnit * 4,
+      marginTop: spacing(4),
     },
   };
 }
@@ -54,10 +56,20 @@ function AppView({ classes }) {
     <div className={classes.root}>
       <Header className={classes.header} />
       <div className={classes.content}>
-        <HomePage className={classes.page} />
-        <Responsiveness up="sm">
-          <FamousQuote className={classes.quote} />
-        </Responsiveness>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <HomePage {...props} className={classes.page} />}
+          />
+          <Route
+            path="/callback"
+            render={props => <Callback {...props} className={classes.page} />}
+          />
+          <Route to="*" render={() => <Redirect to="/" />} />
+        </Switch>
+
+        <FamousQuote className={classes.quote} />
       </div>
     </div>
   );

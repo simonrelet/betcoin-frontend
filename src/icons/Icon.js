@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import injectSheet from 'react-jss';
+import injectStyle from '../core/injectStyle';
 
 const styles = {
-  icon: {
+  root: {
     display: 'inline-block',
     fill: 'currentColor',
     flexShrink: 0,
@@ -14,10 +13,9 @@ const styles = {
   },
 };
 
-function Icon(props) {
-  const { children, classes, className, viewBox } = props;
+function Icon({ children, classes, viewBox, ...otherProps }) {
   return (
-    <svg viewBox={viewBox} className={classNames(classes.icon, className)}>
+    <svg viewBox={viewBox} className={classes.root} {...otherProps}>
       {children}
     </svg>
   );
@@ -26,8 +24,7 @@ function Icon(props) {
 Icon.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   viewBox: PropTypes.string.isRequired,
 };
 
-export default injectSheet(styles)(Icon);
+export default injectStyle(styles)(Icon);

@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { I18n } from 'react-i18next';
 import injectStyle from '../../core/injectStyle';
 import IconButton from '../IconButton';
 import Responsiveness from '../Responsiveness';
 
-function styles({ palette, spacingUnit, breakpoints }) {
+function styles({ palette, spacing, breakpoints }) {
   const backgroundColor = palette.grey[900];
   const color = palette.white;
   const colorSecondary = palette.textAlternative.secondary;
@@ -26,7 +26,7 @@ function styles({ palette, spacingUnit, breakpoints }) {
     item: {
       color,
       '&:not(:first-child)': {
-        marginTop: spacingUnit,
+        marginTop: spacing(),
       },
       [breakpoints.down('sm')]: {
         fontSize: 14,
@@ -51,7 +51,7 @@ function styles({ palette, spacingUnit, breakpoints }) {
       display: 'flex',
     },
     pillButton: {
-      padding: spacingUnit,
+      padding: spacing(),
     },
     pill: {
       borderRadius: '50%',
