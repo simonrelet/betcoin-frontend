@@ -8,9 +8,9 @@ import IconButton from '../IconButton';
 import Responsiveness from '../Responsiveness';
 
 function styles({ palette, spacing, breakpoints }) {
-  const backgroundColor = palette.grey[900];
+  const backgroundColor = '#212121';
   const color = palette.white;
-  const colorSecondary = palette.textAlternative.secondary;
+  const colorSecondary = palette.text.contrast.secondary;
   const pillSize = 5;
 
   return {

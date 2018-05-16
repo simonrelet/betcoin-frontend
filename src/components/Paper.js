@@ -24,7 +24,7 @@ function styles({ palette, shadows, spacing }) {
       marginBottom: spacing(2),
     },
     title: {
-      color: palette.text.secondary,
+      color: palette.text.default.secondary,
       fontSize: 30,
       fontWeight: 400,
       textAlign: 'center',

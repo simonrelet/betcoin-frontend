@@ -7,7 +7,7 @@ import FamousQuote from '../FamousQuote';
 import Header from '../Header';
 import HomePage from '../HomePage';
 
-function styles({ palette, typography, spacing }) {
+function styles({ palette, mixins, spacing }) {
   return {
     '@global': {
       '*': {
@@ -20,10 +20,9 @@ function styles({ palette, typography, spacing }) {
         boxSizing: 'border-box',
       },
       body: {
-        color: palette.text.primary,
-        backgroundColor: palette.background.default,
-        fontFamily: typography.fontFamily,
-        fontSize: typography.fontSize,
+        ...mixins.typography,
+        color: palette.text.default.primary,
+        backgroundColor: palette.background.app,
         margin: 0,
       },
     },

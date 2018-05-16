@@ -4,7 +4,7 @@ import injectStyle from '../core/injectStyle';
 import BetcoinIcon from '../icons/BetcoinIcon';
 import Paper from './Paper';
 
-function styles({ typography }) {
+function styles({ spacing }) {
   return {
     root: {
       display: 'flex',
@@ -18,7 +18,9 @@ function styles({ typography }) {
       flexDirection: 'column',
       alignItems: 'center',
     },
-    content: typography.body,
+    content: {
+      margin: [spacing(2), 0],
+    },
   };
 }
 

@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import injectStyle from '../core/injectStyle';
 
-function styles({ maxWidth }) {
+function styles() {
   return {
     root: {
-      ...maxWidth,
+      margin: [0, 'auto'],
+      maxWidth: 1260,
+      width: '90vw',
     },
   };
 }

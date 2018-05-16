@@ -11,7 +11,7 @@ function styles({ palette, shadows, spacing, zIndex, breakpoints }) {
   return {
     root: {
       alignItems: 'center',
-      backgroundColor: palette.primary.base,
+      backgroundColor: palette.primary,
       boxShadow: shadows[2],
       color: palette.white,
       display: 'flex',

@@ -6,21 +6,20 @@ import injectStyle from '../../core/injectStyle';
 import Paper from '../Paper';
 import WithUser from '../WithUser';
 
-function styles({ spacing, typography, palette }) {
+function styles({ spacing, palette }) {
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
     },
     content: {
-      ...typography.body,
       flex: 1,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
     button: {
-      backgroundColor: palette.primary.base,
+      backgroundColor: palette.primary,
       color: palette.white,
       border: 0,
       padding: [spacing(2), spacing(4)],

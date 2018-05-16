@@ -7,7 +7,7 @@ import Page from '../Page';
 import BitcoinBanner from './BitcoinBanner';
 import UserInfo from './UserInfo';
 
-function styles({ palette, spacing, breakpoints, typography }) {
+function styles({ palette, spacing, breakpoints }) {
   return {
     root: {
       display: 'flex',
@@ -20,12 +20,15 @@ function styles({ palette, spacing, breakpoints, typography }) {
       flex: [1, 0, 'auto'],
     },
     title: {
-      ...typography.title,
+      fontSize: 48,
+      fontWeight: 400,
       textAlign: 'center',
       margin: [spacing(6), 0, spacing(4)],
     },
     subTitle: {
-      ...typography.subTitle,
+      color: palette.text.default.secondary,
+      fontSize: 24,
+      fontWeight: 400,
       textAlign: 'center',
       margin: [spacing(4), 0],
     },

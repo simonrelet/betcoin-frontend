@@ -1,16 +1,16 @@
+import { create as createJss } from 'jss';
+import jssPreset from 'jss-preset-default';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { create as createJss } from 'jss';
 import { JssProvider } from 'react-jss';
-import jssPreset from 'jss-preset-default';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import App from './components/App';
+import ThemeProvider from './components/ThemeProvider';
+import auth from './core/auth';
 import reducers from './core/reducers';
 import storage from './core/storage';
-import auth from './core/auth';
-import ThemeProvider from './components/ThemeProvider';
-import App from './components/App';
-import themes from './themes';
+import themes from './core/themes';
 import initializeI18n from './initializeI18n';
 import registerServiceWorker from './registerServiceWorker';
 

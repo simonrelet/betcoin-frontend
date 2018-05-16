@@ -14,7 +14,7 @@ function styles({ palette, spacing }) {
   return {
     root: {
       alignItems: 'center',
-      backgroundColor: palette.grey[800],
+      backgroundColor: palette.background.contrast,
       color: palette.white,
       display: 'flex',
       justifyContent: 'center',

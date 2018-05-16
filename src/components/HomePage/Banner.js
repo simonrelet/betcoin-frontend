@@ -7,14 +7,14 @@ import HandCoinIcon from '../../icons/HandCoinIcon';
 function styles({ palette, spacing, breakpoints }) {
   return {
     root: {
-      backgroundColor: palette.secondary.base,
+      backgroundColor: palette.secondary,
       padding: [spacing(2), spacing(6)],
       display: 'flex',
       flex: 'none',
       justifyContent: 'center',
       height: 150,
       borderBottom: {
-        color: palette.secondary.darker,
+        color: palette.darken(palette.secondary),
         style: 'solid',
         width: 10,
       },
